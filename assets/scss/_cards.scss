@@ -1,0 +1,72 @@
+// Initial Cards
+.initial-card {
+  @include card-shell;
+  width: 200px;
+  min-height: 180px;
+  padding: 2rem 1.5rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-hover;
+  }
+
+  .card-icon {
+    @include icon-box(56px);
+  }
+
+  .card-description {
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  // Theme Applications
+  &.theme-green {
+    @include theme-card($green-bg, $green-br, $green-ink);
+    .card-icon {
+      @include theme-icon(lighten($green-bg, 2%), $green-ink);
+    }
+  }
+
+  &.theme-purple {
+    @include theme-card($purple-bg, $purple-br, $purple-ink);
+    .card-icon {
+      @include theme-icon(lighten($purple-bg, 2%), $purple-ink);
+    }
+  }
+
+  &.theme-red {
+    @include theme-card($red-bg, $red-br, $red-ink);
+    .card-icon {
+      @include theme-icon(lighten($red-bg, 2%), $red-ink);
+    }
+  }
+
+  &.theme-blue {
+    @include theme-card($blue-bg, $blue-br, $blue-ink);
+    .card-icon {
+      @include theme-icon(lighten($blue-bg, 2%), $blue-ink);
+    }
+  }
+
+  &.theme-orange {
+    @include theme-card($orange-bg, $orange-br, $orange-ink);
+    .card-icon {
+      @include theme-icon(lighten($orange-bg, 2%), $orange-ink);
+    }
+  }
+
+  @include mobile-only {
+    min-width: 220px;
+    scroll-snap-align: center;
+    width: 180px;
+    min-height: 160px;
+    padding: 1.5rem 1rem;
+  }
+}

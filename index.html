@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Carousel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <div class="cards-container" id="cardsContainer" aria-hidden="false">
+        <div
+          class="cards-grid"
+          id="cardsGrid"
+          aria-label="Feature cards grid"
+        ></div>
+      </div>
+      <!-- Carousel Layout -->
+      <div class="carousel-layout" id="carouselLayout" aria-hidden="true">
+        <div class="carousel-section">
+          <div class="carousel-wrapper" id="carouselWrapper">
+            <button
+              class="carousel-nav prev-btn"
+              id="carouselPrev"
+              aria-label="Previous card"
+            >
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="carousel-container" id="carouselContainer"></div>
+            <button
+              class="carousel-nav next-btn"
+              id="carouselNext"
+              aria-label="Next card"
+            >
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+        <!-- Details Panel -->
+        <div
+          class="details-popup"
+          id="detailsPopup"
+          role="dialog"
+          aria-modal="false"
+          aria-labelledby="detailsTitle"
+        >
+          <div class="details-header">
+            <button
+              class="close-details"
+              id="closeDetails"
+              aria-label="Close details"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="details-body">
+            <div class="details-navigation" aria-label="Card navigation">
+              <button
+                class="nav-arrow"
+                id="detailsUp"
+                aria-label="Previous card"
+              >
+                <i class="fas fa-chevron-up"></i>
+              </button>
+              <div class="card-counter" id="cardCounter" aria-live="polite">
+                1/5
+              </div>
+              <button class="nav-arrow" id="detailsDown" aria-label="Next card">
+                <i class="fas fa-chevron-down"></i>
+              </button>
+            </div>
+            <div class="details-content" id="detailsContent"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile Modal -->
+      <div
+        class="mobile-modal"
+        id="mobileModal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="mobileTitle"
+        aria-hidden="true"
+      >
+        <div class="mobile-modal-content" role="document">
+          <button class="mobile-close" id="mobileClose" aria-label="Close">
+            <i class="fas fa-times"></i>
+          </button>
+          <div class="mobile-nav" aria-label="Card navigation">
+            <button class="mobile-nav-btn" id="mobileUp" aria-label="Previous">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <span class="mobile-counter" id="mobileCounter" aria-live="polite"
+              >1/5</span
+            >
+            <button class="mobile-nav-btn" id="mobileDown" aria-label="Next">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+          <div class="mobile-details" id="mobileDetails"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/assets/scripts/models/CarouselModel.js"></script>
+    <script src="/assets/scripts/views/CarouselView.js"></script>
+    <script src="/assets/scripts/controllers/CarouselController.js"></script>
+    <script src="/assets/scripts/main.js"></script>
+  </body>
+</html>

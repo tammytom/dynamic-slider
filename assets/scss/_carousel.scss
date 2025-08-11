@@ -1,0 +1,293 @@
+// Carousel Navigation
+.carousel-nav {
+  @include button-reset;
+  @include flex-center;
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  border-radius: 50%;
+  background: $white;
+  color: $primary-color;
+  border: 1px solid $card-border;
+  box-shadow: $shadow;
+  font-size: 1.15rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: $z-carousel-nav;
+  transition: $transition;
+
+  &:hover {
+    background: $primary-color;
+    color: $white;
+    transform: translateY(-50%) scale(1.06);
+    box-shadow: $shadow-hover;
+  }
+
+  &.prev-btn {
+    left: calc((100% - var(--carousel-width)) / 2 - var(--arrow-size) - var(--arrow-gap));
+  }
+
+  &.next-btn {
+    right: calc((100% - var(--carousel-width)) / 2 - var(--arrow-size) - var(--arrow-gap));
+  }
+
+  @include mobile-only {
+    font-size: 1rem;
+
+    &.prev-btn {
+      left: 8px;
+    }
+
+    &.next-btn {
+      right: 8px;
+      left: auto;
+    }
+  }
+}
+
+// Carousel Container
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: var(--carousel-width);
+  max-width: 100%;
+  height: 250px;
+  border-radius: $border-radius;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateZ(0) scale(0.98);
+  transition: $transition;
+
+  &.carousel-ready {
+    opacity: 1;
+    transform: translateZ(0) scale(1);
+  }
+
+  @include mobile-only {
+    height: 220px;
+  }
+}
+
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Carousel Cards
+.carousel-card {
+  @include card-shell;
+  position: absolute;
+  top: 50%;
+  width: 170px;
+  height: 200px;
+  min-height: 200px;
+  max-height: 200px;
+  padding: 1rem 0.8rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  gap: 0.75rem;
+  transform: translateY(-50%) scale(0.82);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: none;
+  z-index: 1;
+
+  .card-icon {
+    @include icon-box(44px);
+    margin: 0 auto;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-description {
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0 auto;
+    max-width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex: 0 0 auto;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: initial;
+  }
+
+  // Theme Applications
+  &.theme-green {
+    @include theme-card($green-bg, $green-br, $green-ink);
+    .card-icon {
+      @include theme-icon(lighten($green-bg, 2%), $green-ink);
+    }
+  }
+
+  &.theme-purple {
+    @include theme-card($purple-bg, $purple-br, $purple-ink);
+    .card-icon {
+      @include theme-icon(lighten($purple-bg, 2%), $purple-ink);
+    }
+  }
+
+  &.theme-red {
+    @include theme-card($red-bg, $red-br, $red-ink);
+    .card-icon {
+      @include theme-icon(lighten($red-bg, 2%), $red-ink);
+    }
+  }
+
+  &.theme-blue {
+    @include theme-card($blue-bg, $blue-br, $blue-ink);
+    .card-icon {
+      @include theme-icon(lighten($blue-bg, 2%), $blue-ink);
+    }
+  }
+
+  &.theme-orange {
+    @include theme-card($orange-bg, $orange-br, $orange-ink);
+    .card-icon {
+      @include theme-icon(lighten($orange-bg, 2%), $orange-ink);
+    }
+  }
+
+  // Positioning States
+  &.positioned {
+    opacity: 1;
+    visibility: visible;
+    transition: transform 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.22s ease-out;
+  }
+
+  // Center Card
+  &.center.positioned {
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%) scale(1);
+    z-index: $z-carousel-center;
+    box-shadow: $shadow-hover;
+    pointer-events: auto;
+    filter: none;
+    opacity: 1;
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      font-size: 24px;
+    }
+
+    .card-description {
+      font-size: 0.95rem;
+    }
+  }
+
+  // Adjacent Cards
+  &.left-adjacent.positioned {
+    left: 37.5%;
+    transform: translateX(-50%) translateY(-50%) scale(0.88);
+    z-index: $z-carousel-adjacent;
+    opacity: 0.4;
+    filter: blur(1.5px);
+  }
+
+  &.right-adjacent.positioned {
+    left: 62.5%;
+    transform: translateX(-50%) translateY(-50%) scale(0.88);
+    z-index: $z-carousel-adjacent;
+    opacity: 0.4;
+    filter: blur(1.5px);
+  }
+
+  // Second-level Cards
+  &.left-second.positioned {
+    left: 12.5%;
+    transform: translateX(-50%) translateY(-50%) scale(0.76);
+    z-index: $z-carousel-second;
+    opacity: 0.15;
+    filter: blur(2.5px);
+  }
+
+  &.right-second.positioned {
+    left: 87.5%;
+    transform: translateX(-50%) translateY(-50%) scale(0.76);
+    z-index: $z-carousel-second;
+    opacity: 0.15;
+    filter: blur(2.5px);
+  }
+
+  // Responsive Blur Effects
+  @media (min-width: #{$mobile-breakpoint + 1px}) and (max-width: 1023px) {
+    &.left-adjacent.positioned,
+    &.right-adjacent.positioned {
+      opacity: 0.4;
+      filter: blur(1.5px);
+    }
+
+    &.left-second.positioned,
+    &.right-second.positioned {
+      opacity: 0.15;
+      filter: blur(2.5px);
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1023px) {
+    &.left-adjacent.positioned {
+      left: 38%;
+      opacity: 0.45;
+      filter: blur(1.2px);
+    }
+
+    &.right-adjacent.positioned {
+      left: 62%;
+      opacity: 0.45;
+      filter: blur(1.2px);
+    }
+  }
+
+  @include mobile-only {
+    &.left-adjacent.positioned,
+    &.right-adjacent.positioned,
+    &.left-second.positioned,
+    &.right-second.positioned {
+      filter: none;
+    }
+
+    &.left-adjacent.positioned {
+      left: 35%;
+      opacity: 0.5;
+    }
+
+    &.right-adjacent.positioned {
+      left: 65%;
+      opacity: 0.5;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .carousel-card {
+    &.left-adjacent.positioned,
+    &.right-adjacent.positioned {
+      opacity: 0.4;
+      filter: blur(1.5px);
+    }
+
+    &.left-second.positioned,
+    &.right-second.positioned {
+      opacity: 0.15;
+      filter: blur(2.5px);
+    }
+  }
+}

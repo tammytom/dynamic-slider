@@ -566,7 +566,7 @@ body {
 }
 .close-details:hover {
   background: rgba(255, 255, 255, 0.1);
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 .details-body {

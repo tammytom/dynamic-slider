@@ -8,10 +8,11 @@ html {
   -webkit-overflow-scrolling: touch;
 }
 body {
-  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+    sans-serif;
   color: $text-color;
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  min-height: 100dvh;
+  min-height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
   width: 100%;

@@ -24,11 +24,15 @@
   }
 
   &.prev-btn {
-    left: calc((100% - var(--carousel-width)) / 2 - var(--arrow-size) - var(--arrow-gap));
+    left: calc(
+      (100% - var(--carousel-width)) / 2 - var(--arrow-size) - var(--arrow-gap)
+    );
   }
 
   &.next-btn {
-    right: calc((100% - var(--carousel-width)) / 2 - var(--arrow-size) - var(--arrow-gap));
+    right: calc(
+      (100% - var(--carousel-width)) / 2 - var(--arrow-size) - var(--arrow-gap)
+    );
   }
 
   @include mobile-only {
@@ -169,7 +173,8 @@
   &.positioned {
     opacity: 1;
     visibility: visible;
-    transition: transform 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.22s ease-out;
+    transition: transform 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      opacity 0.22s ease-out;
   }
 
   // Center Card
